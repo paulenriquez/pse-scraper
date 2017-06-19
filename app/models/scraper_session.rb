@@ -1,0 +1,2 @@
+class ScraperSession < ApplicationRecord
+end

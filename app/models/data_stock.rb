@@ -1,0 +1,2 @@
+class DataStock < ApplicationRecord
+end

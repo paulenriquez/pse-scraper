@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: SQL_ASCII
+  pool: 5
+  timeout: 5000
+  username: ubuntu
+  password:
+
+development:
+  <<: *default
+  database: sgv_pse_scraper_development
+
+test:
+  <<: *default
+  database: sgv_pse_scraper_test
+
+production:
+  <<: *default
+  database: sgv_pse_scraper_production

@@ -1,0 +1,2 @@
+class DataIndex < ApplicationRecord
+end

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PSE Edge Web Scraper - SGV</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="content">
+    <div class="top">
+      <h2>PSE Edge Web Scraper</h2>
+      <div class="menu">
+        <a href="">Home</a> |
+        <a href="">Scraper</a> |
+        <a href="">Database</a>
+      </div>
+    </div>
+    <div class="main">
+      <%= yield %>
+    </div>
+  </div>
+</body>
+</html>

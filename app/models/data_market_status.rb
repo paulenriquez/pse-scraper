@@ -1,0 +1,2 @@
+class DataMarketStatus < ApplicationRecord
+end
