@@ -2,10 +2,13 @@ class PagesController < ApplicationController
     def index
         
     end
-    def scrape
+    def scraper
         
     end
     def database
         
+    end
+    def status
+        render json: ScrapeSession.all
     end
 end

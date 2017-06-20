@@ -38,7 +38,7 @@ class CreateDataStocks < ActiveRecord::Migration[5.0]
       t.string :sector_pe_ratio
       t.string :book_value
       t.string :pbv_ratio
-      
+
       t.timestamps
     end
   end
