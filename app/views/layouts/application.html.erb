@@ -2,8 +2,13 @@
 <html>
 <head>
   <title>PSE Edge Web Scraper - SGV</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
+  
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= stylesheet_link_tag params[:controller] if File.exists? "app/assets/stylesheets/#{params[:controller]}.scss" %>
+  
   <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag params[:controller] if File.exists? "app/assets/javascripts/#{params[:controller]}.js" %>
+  
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -11,9 +16,15 @@
     <div class="top">
       <h2>PSE Edge Web Scraper</h2>
       <div class="menu">
-        <a href="">Home</a> |
-        <a href="">Scraper</a> |
-        <a href="">Database</a>
+        <div class="left-items">
+          <%= current_page?(pages_index_path) || current_page?(root_path) ? 'Home' : link_to('Home', pages_index_path) %>
+          | <%= current_page?(pages_scraper_path) ? 'Scraper' : link_to('Scraper', pages_scraper_path) %>
+          | <%= current_page?(pages_database_path) ? 'Database' : link_to('Database', pages_database_path) %>
+          | <%= current_page?(pages_settings_path) ? 'Settings' : link_to('Settings', pages_settings_path) %>
+        </div>
+        <div class="right-items">
+          <span id="label-systemDatetime"><%= Time.zone.now.to_s %></span>
+        </div>
       </div>
     </div>
     <div class="main">

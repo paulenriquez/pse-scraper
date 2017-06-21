@@ -8,7 +8,7 @@ class PagesController < ApplicationController
     def database
         
     end
-    def status
-        render json: ScrapeSession.all
+    def settings
+        
     end
 end
