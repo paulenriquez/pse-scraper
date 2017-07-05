@@ -33,7 +33,7 @@ Date.prototype.incrementByOneSecond = function() {
     var date = new Date(this);
     date.setSeconds(date.getSeconds() + 1);
     
-    var dayOfWk, dayOfMon, monName, year, hour, min, sec
+    var dayOfWk, dayOfMon, monName, year, hour, min, sec;
     
     dayOfWk = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][date.getDay()];
     dayOfMon = date.getDate().toString().length == 1 ? `0${date.getDate()}` : date.getDate();
