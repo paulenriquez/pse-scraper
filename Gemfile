@@ -11,7 +11,12 @@ gem 'jbuilder', '~> 2.5'
 gem 'httparty', '~> 0.13.7'
 gem 'delayed_job_active_record'
 gem 'daemons', '~> 1.2', '>= 1.2.3'
-gem 'whenever', '~> 0.9.7'
+gem 'parse-cron'
+gem 'rubyzip', '~> 1.1.0'
+gem 'axlsx', '2.1.0.pre'
+gem 'axlsx_rails'
+gem 'will_paginate', '~> 3.1.0'
+gem 'material_icons'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

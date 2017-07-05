@@ -1,7 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>PSE Edge Web Scraper - SGV</title>
+  
+  <meta charset="UTF-8">
+  <meta name="google" content="notranslate">
+  <meta http-equiv="Content-Language" content="en">
   
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= stylesheet_link_tag params[:controller] if File.exists? "app/assets/stylesheets/#{params[:controller]}.scss" %>
@@ -17,15 +21,26 @@
       <h2>PSE Edge Web Scraper</h2>
       <div class="menu">
         <div class="left-items">
-          <%= current_page?(pages_index_path) || current_page?(root_path) ? 'Home' : link_to('Home', pages_index_path) %>
-          | <%= current_page?(pages_scraper_path) ? 'Scraper' : link_to('Scraper', pages_scraper_path) %>
+          <%= current_page?(pages_scraper_path) || current_page?(root_path) ? 'Scraper' : link_to('Scraper', pages_scraper_path) %>
           | <%= current_page?(pages_database_path) ? 'Database' : link_to('Database', pages_database_path) %>
-          | <%= current_page?(pages_settings_path) ? 'Settings' : link_to('Settings', pages_settings_path) %>
+          | <%= current_page?(pages_about_path) ? 'About' : link_to('About', pages_about_path) %>
         </div>
         <div class="right-items">
-          <span id="label-systemDatetime"><%= Time.zone.now.to_s %></span>
+          <span id="label-systemTime"><%= Time.zone.now.strftime('%a, %d %b %Y %H:%M:%S') %></span>
         </div>
       </div>
+    </div>
+    <div class="page-messages">
+      <% if notice %>
+        <div class="page-message success">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+      <% if alert %>
+        <div class="page-message error">
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
     </div>
     <div class="main">
       <%= yield %>

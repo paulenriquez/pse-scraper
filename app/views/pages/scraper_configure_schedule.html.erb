@@ -1,0 +1,66 @@
+<div class="view-scope scope-page-scraper-configure-schedule">
+    <div class="page-section with-border">
+        <div class="section-header">Configure Schedule</div>
+        <div class="section-content">
+            The scrape schedule can be configured here. Enter the scrape schedule in <b>cron format</b> in the textbox, then click "Save".
+            Note that changing the scrape schedule will clear all the currently scheduled scrapes. A currently running session won't be affected by
+            a change in schedule.<br><br>
+            
+            To stop the system from scheduling scraping sessions, click "Disable Auto Scraper." This will clear all scheduled sessions<br><br>
+            
+            A guide on writing cron expressions can be found below.<br><br>
+            <%= form_for @setting, url: {controller: 'settings', action: 'set_schedule'}, method: 'POST' do |f| %>
+                <%= label_tag :scraper_schedule, 'Cron Exp.:' %>
+                <%= f.text_field :scraper_schedule, id: 'input-scrapeSched' %>
+                <%= f.submit 'Save', id: 'button-submitScrapeSched', disabled: @no_schedule %>
+                &nbsp;
+                <%= link_to 'Disable Auto Scraper', settings_clear_schedule_path, {method: 'POST', class: @no_schedule ? 'disabled' : '' } %>
+                <div id="label-cronEval"></div>
+            <% end %>
+        </div>
+    </div>
+    <br>
+    <div class = "page-section">
+        <div class="section-header"><center>Guide to writing Cron Expressions</center></div>
+        <div class="section-content">
+            <p>Cron expressions are a way of defining time and frequency. The syntax consists of six fields:</p>
+            <pre>[minute] [hour] [day of the month] [month of the year] [day of the week] [year]</pre>
+            <p>Each field may contain the following values:</p>
+            
+            <pre>
+<b>FIELD                   REQUIRED?     ALLOWED VALUES</b>
+[minute]                Yes           0-59
+[hour]                  Yes           0-23
+[day of the month]      Yes           1-31
+[month of the year]     Yes           1-12 or JAN-DEC
+[day of the week]       Yes           1-7 (1 stands for Monday) or MON-SUN
+[year]                  No            1900-3000</pre>
+
+            <p>Fields may just be an asterisk (*) which signifies an entire range of values (i.e. every minute, every hour, every day, etc.)</p>
+            <p>A field may contain a list of values separated by commas. For example, writing "1,3,5,7" in the [month of the year] field specifies that an action should be executed on Jan, Mar, May, and July.</p>
+            <p>Additionally, a field may also contain a range of values (two integers separated by a hyphen, e.g. 1-5).</p>
+            <p>After an asterisk (*) or a range of values, you can use a forward slash (/) to specify that values are repeated over and over with a certain interval between them. For example, writing "0-23/2" in the [hour] field to specify that some action should be performed every two hours.</p>
+            <b>Examples:</b>
+            <pre>
+<b>CRON EXPRESSION                        EVALUATION</b>
+* * * * * *                            Every minute, every hour, every day of the month, every month,
+                                       every day of the week, and every year.
+                                       
+30 3 * * 6-7 *                         Every 3:30 AM, on Saturdays and Sundays.
+
+30 15 * * 1-5 *                        Every 3:30 PM, from Monday to Friday.
+
+30 15 * * MON-FRI *                    Same as above.
+
+2,4,6,8,10,12,14,16,18,20,22,24        Every 2 minutes.
+26,28,30,32,34,36,38,40,42,44,46
+48,50,52,54,56,58 * * * * *         
+
+*/2 * * * * *                          Same as above.
+
+* * * MAR * 2011-2020                  Every minute, every hour, every day of the month, and every day
+                                       of the week as long as the month is March, and the year is
+                                       between 2011 and 2020 inclusive.</pre>
+        </div>
+    </div>
+</div>

@@ -1,8 +1,18 @@
-class PseEdge < ScraperService
-    SCRAPER_SERVICE = { name: 'PseEdge', version: '1.0' }
-    
-    def initialize(launched_from = nil)
-        initialize_scraper_service(SCRAPER_SERVICE, launched_from)
+class ScrapingAlgorithms::PseEdgeV1 < BaseScraperService
+
+    SCRAPER_SERVICE = { 
+        name: self.name.split('::')[1] 
+    }
+    DATA_TABLES = ['data_market_statuses', 'data_indices', 'data_stocks']
+
+    def initialize(details = nil, start_on = nil, cron_exp = nil)
+        initialize_scraper_service({
+            scraper_service: SCRAPER_SERVICE,
+            data_tables: DATA_TABLES,
+            details: details,
+            start_on: start_on,
+            cron_exp: cron_exp
+        })
     end
     
     private
@@ -19,7 +29,7 @@ class PseEdge < ScraperService
             
             data_market_status = DataMarketStatus.new(scraper_session_id: @current_session.id)
             
-            update_status("Scraping Market Status from #{urls[:market_status]}")
+            update_status("Extracting Market Status")
             
             data_market_status.last_updated  = market_status_page.css('div#market table.list:eq(1) thead tr th:eq(2)').text
             data_market_status.total_volume  = market_status_page.css('div#market table.list:eq(1) tbody tr:eq(1) td:eq(2)').text
@@ -40,7 +50,7 @@ class PseEdge < ScraperService
             
             update_status("Scraping Index Data from #{urls[:indices]}")
             index_data_page.css('div#index table.list:eq(1) tbody tr').each do |table_row|
-                update_status("Scraping Index Data from #{urls[:indices]} — #{table_row.css('td.label').text} ...")
+                update_status("Extracting Index Data — #{table_row.css('td.label').text} ...")
                 
                 data_index = DataIndex.new(scraper_session_id: @current_session.id)
                 
@@ -78,7 +88,7 @@ class PseEdge < ScraperService
                         
                         data_stock = DataStock.new(scraper_session_id: @current_session.id)
                         
-                        update_status("Scraping Stock Data from #{urls[:stock_data] + "?cmpy_id=#{company_id}&security_id=#{security_id}"} — #{stock_data_page.css('div#contents form select[name=security_id] option[selected]').text}")
+                        update_status("Extracting Stock Data — #{stock_data_page.css('div#contents form select[name=security_id] option[selected]').text}")
                         
                         data_stock.ticker                      = stock_data_page.css('div#contents form select[name=security_id] option[selected]').text
                         data_stock.last_updated                = stock_data_page.css('div#contents form span:eq(1)').text

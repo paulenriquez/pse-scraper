@@ -1,6 +1,140 @@
 .view-scope.scope-page-scraper {
-    .scraper-status {
-        border: 1px solid dimgray;
-        padding: 0.5em;
+    #table-scrapeSchedule {
+        width: 100%;
+        vertical-align: center;
+        td:nth-child(1) { width: 2%; }
+        td:nth-child(2) { width: 27%; }
+        td:nth-child(3) { width: 28%; }
+    }
+}
+.view-scope.scope-page-scraper-configure-schedule {
+    form {
+        margin-top: 0.3em;
+        label {
+            font-size: 0.9em;
+        }
+        #input-scrapeSched {
+            width: 50%;
+        }
+        #button-submitScrapeSched {
+            width: 4em;
+        }
+        #label-cronEval {
+            margin-top: 0.3em;
+            font-size: 0.9em;
+        }
+    }
+}
+.view-scope.scope-page-scraper-session-launcher {
+    form {
+        label {
+            font-size: 0.9em;
+        }
+        .details-input {
+            width: 40%;
+        }
+        .submit-details-button {
+            width: 5em;
+        }
+    }
+}
+.view-scope.scope-page-database {
+    .instructions {
+        .material-icons {
+            font-size: 1.3em;
+        }
+    }
+    .sessions-list-table {
+        width: 100%;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        font-size: 0.9em;
+        thead {
+            font-weight: 700;
+            td {
+                padding-bottom: 1em;
+            }
+        }
+        td {
+            max-width: 0;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        td:nth-child(1) { width: 5%; }
+        td:nth-child(2) { width: 25%; }
+        td:nth-child(3) { width: 35%; }
+        td:nth-child(4) { width: 15%; }
+        td:nth-child(5) { width: 10%; }
+        td:nth-child(6) {
+            width: 10%;
+            text-align: right;
+            .material-icons {
+                color: #9999ff;
+                font-size: 1.15em;
+            }
+            .material-icons:hover {
+                color: #0000EE;
+            }
+            .material-icons:active {
+                color: #EE0000;
+            }
+        }
+    }
+    .pagination {
+        text-align: center;
+        font-size: 1.05em;
+        span.disabled {
+            color: dimgray;
+        }
+        .previous_page {
+            margin-right: 0.6em;
+        }
+        .next_page {
+            margin-left: 0.6em;
+        }
+        em.current {
+            font-style: normal;
+        }
+    }
+}
+.view-scope.scope-page-database-show-session {
+    .session-info-table {
+        tr:nth-child(8) td:nth-child(2) div {
+            display: inline-block;
+            width: 7em;
+        }
+    }
+    .table-preview-container {
+        overflow: scroll;
+        margin-top: 0.5em;
+        border: 1px darkgray solid;
+        height: 35vw;
+        
+        #table-preview {
+            font-size: 0.9em;
+            tr:nth-child(1) {
+                font-weight: 700;
+                td {
+                    padding-bottom: 0.6em !important;
+                }
+            }
+            td {
+                padding: 0.15em 0.55em 0.15em 0.55em;
+                white-space: nowrap;
+            }
+        }
+    }
+}
+
+.session-info-table {
+    tr {
+        * {
+            vertical-align: top;
+        }
+        td:nth-child(1) {
+            width: 10em;
+            font-weight: 700;
+        }
     }
 }

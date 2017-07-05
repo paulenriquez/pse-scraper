@@ -1,9 +1,55 @@
 <div class="view-scope scope-page-scraper">
-    <div class="scraper-status">
-        <div>Scraper Status</div>
-        <div>Not running</div>
+    <div class="page-section with-border">
+        <div class="section-header">Active Session</div>
+        <div class="section-content">
+            <div id="label-scraperStatus">Loading...</div>
+            <hr>
+            <table id="table-sessionStatus" class="session-info-table">
+                <tbody>
+                    <tr>
+                        <td>Status</td>
+                        <td>n/a</td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+            <table id="table-activeSessionInfo" class="session-info-table">
+                <tbody>
+                    <tr>
+                        <td>Database Id</td>
+                        <td>n/a</td>
+                    </tr>
+                    <tr>
+                        <td>Launched at</td>
+                        <td>n/a</td>
+                    </tr>
+                    <tr>
+                        <td>Details</td>
+                        <td>n/a</td>
+                    </tr>
+                    <tr>
+                        <td>Scraper</td>
+                        <td>n/a</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-    <div class="scrape-session-history">
-        
+    <div class="page-section with-border">
+        <div class="section-header">Schedule</div>
+        <div class="section-content">
+            The system can automatically launch a scraping session based on the schedule configuration.
+            The scrape schedule can be changed at the <%= link_to 'configure schedule', pages_scraper_configure_schedule_path %> page.
+            <hr>
+            <table id="table-scrapeSchedule">
+                <tbody><tr><td>Loading...</td></tr></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="page-section with-border">
+        <div class="section-header">Manual launcher</div>
+        <div class="section-content">
+            To manually launch a scraping session, go to the <%= link_to 'session launcher', pages_scraper_session_launcher_path %> page.
+        </div>
     </div>
 </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170620015345) do
+ActiveRecord::Schema.define(version: 20170628062811) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,11 +93,19 @@ ActiveRecord::Schema.define(version: 20170620015345) do
 
   create_table "scraper_sessions", force: :cascade do |t|
     t.datetime "launched_at"
-    t.string   "launched_from"
+    t.string   "details"
     t.json     "scraper_service"
+    t.text     "data_tables",      default: [],              array: true
     t.string   "run_state"
+    t.boolean  "repeat"
     t.json     "performance_data"
     t.json     "status"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  create_table "settings", force: :cascade do |t|
+    t.string   "scraper_schedule"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end

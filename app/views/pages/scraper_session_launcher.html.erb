@@ -1,0 +1,15 @@
+<div class="view-scope scope-page-scraper-session-launcher">
+    <div class="page-section with-border">
+        <div class="section-header">Scraper Session Launcher</div>
+        <div class="section-content">
+            Manually launch a scraper session by clicking "launch". The session details field is optional.<br><br>
+            Note that manually launching a session may block automatically scheduled sessions from running, so ensure that no scheduled session will
+            run throughout the course of this session. Additionally, a manual session cannot be launched if there is currently a running session.<br><br>
+            <%= form_tag scraper_sessions_launch_path, method: 'POST' do %>
+                <%= label_tag :details, 'Session details:' %>
+                <%= text_field_tag :details, '', class: 'details-input' %>
+                <%= submit_tag 'Launch', class: 'submit-details-button' %>
+            <% end %>
+        </div>
+    </div>
+</div>

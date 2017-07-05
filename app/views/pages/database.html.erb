@@ -1,0 +1,51 @@
+<div class="view-scope scope-page-database">
+    <div class="instructions page-section with-border">
+        <div class="section-content">
+            Listed below are all the scraper sessions that were created, sorted based on the launch date/time in descending order. The list is paginated, and each page contains a maximum of twenty (20) session records.<br><br>
+            
+            Click <%= material_icon.open_in_new %> to view the data in a new window, <%= material_icon.file_download %> to export and download the data (in <i>xlsx</i> format), and
+            <%= material_icon.delete %> to delete the session including all of its scraped data. 
+        </div>
+    </div>
+    <div class="sessions-list">
+        <%= will_paginate @scraper_sessions, previous_label: '< Prev.', next_label: 'Next >' %>
+        <table class="sessions-list-table">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Launched at</td>
+                    <td>Details</td>
+                    <td>Scraper</td>
+                    <td>Records</td>
+                    <td>Actions</td>
+                </tr>
+            </thead>
+            <tbody>
+                <% if @scraper_sessions.empty? %>
+                    <tr>
+                        <td colspan="7"><i>No sessions found.</i></td>
+                    </tr>
+                <% else %>
+                    <% @scraper_sessions.each do |session| %>
+                        <tr>
+                            <td><%= session.id %></td>
+                            <td>
+                                <%= session.launched_at.strftime('%a, %d %b %Y %H:%M:%S') %>
+                            </td>
+                            <td><%= session.details %></td>
+                            <td><%= session.scraper_service['name'] %></td>
+                            <td>[<%= session.run_state.capitalize[0] %>] <%= session.get_records_count %></td>
+                            <td>
+                                <%= link_to material_icon.open_in_new, pages_database_show_session_path(session), title: 'Open session' %>
+                                <%= link_to material_icon.file_download, pages_database_export_path(session, format: 'xlsx'), title: 'Export and download data' %>
+                                &nbsp;
+                                <%= link_to material_icon.delete, '#', title: 'Delete session' %>
+                            </td>
+                        </tr>
+                    <% end %>
+                <% end %>
+            </tbody>
+        </table>
+        <%= will_paginate @scraper_sessions, previous_label: '< Prev.', next_label: 'Next >' %>
+    </div>
+</div>

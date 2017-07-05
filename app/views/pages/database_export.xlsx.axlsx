@@ -1,0 +1,9 @@
+wb = xlsx_package.workbook
+scraped_data = @scraper_session.get_scraped_data
+scraped_data.keys.each do |key|
+    wb.add_worksheet(name: key) do |sheet|
+        scraped_data[key].each do |row|
+            sheet.add_row(row)
+        end
+    end
+end
