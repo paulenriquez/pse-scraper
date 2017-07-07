@@ -12,7 +12,7 @@
         <table class="sessions-list-table">
             <thead>
                 <tr>
-                    <td>Id</td>
+                    <td>SN</td>
                     <td>Launched at</td>
                     <td>Details</td>
                     <td>Scraper</td>
@@ -26,20 +26,21 @@
                         <td colspan="7"><i>No sessions found.</i></td>
                     </tr>
                 <% else %>
-                    <% @scraper_sessions.each do |session| %>
+                    <% @scraper_sessions.each do |scraper_session| %>
                         <tr>
-                            <td><%= session.id %></td>
+                            <td><%= scraper_session.session_num %></td>
                             <td>
-                                <%= session.launched_at.strftime('%a, %d %b %Y %H:%M:%S') %>
+                                <%= scraper_session.launched_at.strftime('%a, %d %b %Y %H:%M:%S') %>
                             </td>
-                            <td><%= session.details %></td>
-                            <td><%= session.scraper_service['name'] %></td>
-                            <td>[<%= session.run_state.capitalize[0] %>] <%= session.get_records_count %></td>
+                            <td><%= scraper_session.details %></td>
+                            <td><%= scraper_session.scraper_service['name'] %></td>
+                            <td>[<%= scraper_session.run_state.capitalize[0] %>] <%= scraper_session.get_records_count %></td>
                             <td>
-                                <%= link_to material_icon.open_in_new, pages_database_show_session_path(session), title: 'Open session' %>
-                                <%= link_to material_icon.file_download, pages_database_export_path(session, format: 'xlsx'), title: 'Export and download data' %>
+                                <%= link_to material_icon.open_in_new, pages_database_show_session_path(scraper_session), title: 'Open session' %>
+                                <%= link_to material_icon.file_download, pages_database_export_path(scraper_session, format: 'xlsx'), title: 'Export and download data' %>
                                 &nbsp;
-                                <%= link_to material_icon.delete, '#', title: 'Delete session' %>
+                                <% delete_prompt = "Are you sure you want to delete Session # #{scraper_session.session_num}? This will delete the session record, including all of its #{scraper_session.get_records_count} scraped data records. This process cannot be reversed." %>
+                                <%= link_to material_icon.delete, scraper_sessions_destroy_path(scraper_session), method: 'DELETE', title: 'Delete session', data: { confirm: delete_prompt } %>
                             </td>
                         </tr>
                     <% end %>

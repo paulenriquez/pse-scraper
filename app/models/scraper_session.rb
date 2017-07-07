@@ -1,11 +1,13 @@
 class ScraperSession < ApplicationRecord
+    after_save :assign_session_num
+    
     def get_records_count
         count = 0
         self.data_tables.each do |table|
             model = table.classify.constantize
             model.all.each do |record|
                 if record.scraper_session_id == self.id
-                   count += 1 
+                   count += 1
                 end
             end
         end
@@ -49,4 +51,16 @@ class ScraperSession < ApplicationRecord
         end
         result
     end
+    
+    private
+        def assign_session_num
+            if self.run_state == 'running'
+                last_ended_session = ScraperSession.where('run_state=? OR run_state=?', 'completed', 'interrupted').last
+                if last_ended_session.nil? == false
+                    self.update_columns(session_num: last_ended_session.session_num + 1)
+                else
+                    self.update_columns(session_num: 1)
+                end
+            end
+        end
 end

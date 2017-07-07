@@ -18,9 +18,9 @@ class PagesController < ApplicationController
 
     end
     def database
-        @scraper_sessions = ScraperSession.where.not(
-            'run_state=? OR run_state=?', 'initialized', 'running'
-        ).order(launched_at: :desc).paginate(page: params[:page], per_page: 20)
+        @scraper_sessions = ScraperSession.where(
+            'run_state=? OR run_state=?', 'completed', 'interrupted'
+        ).order(session_num: :desc).paginate(page: params[:page], per_page: 20)
     end
     def database_show_session
         @scraper_session = ScraperSession.find(params[:id])
@@ -28,7 +28,10 @@ class PagesController < ApplicationController
     def database_export
         @scraper_session = ScraperSession.find(params[:id])
         respond_to do |format|
-            format.xlsx {render xlsx: 'database_export', filename: "session_#{params[:id].to_s}"}
+            format.xlsx {
+                render xlsx: 'database_export',
+                filename: "SN#{@scraper_session.session_num} #{@scraper_session.launched_at.strftime('%Y%m%d-%H%M%S')}"
+            }
         end
     end
     def about

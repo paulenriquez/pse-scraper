@@ -104,7 +104,8 @@ class DataStock < ApplicationRecord
         end
         def get_percent_change
             begin
-                self.change_and_percent_change.split('(')[1].strip.slice(0..-3).to_f
+                raw_percent_change = self.change_and_percent_change.split('(')[1].strip.slice(0..-3)
+                get_change < 0 ? "-#{raw_percent_change}".to_f : raw_percent_change.to_f
             rescue
                 self.change_and_percent_change
             end

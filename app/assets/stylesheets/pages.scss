@@ -100,16 +100,20 @@
 }
 .view-scope.scope-page-database-show-session {
     .session-info-table {
-        tr:nth-child(8) td:nth-child(2) div {
+        tr:nth-child(7) td:nth-child(2) div {
             display: inline-block;
             width: 7em;
         }
+    }
+    .data-preview-subheader {
+        font-weight: 700;
+        margin-bottom: 0.5em;
     }
     .table-preview-container {
         overflow: scroll;
         margin-top: 0.5em;
         border: 1px darkgray solid;
-        height: 35vw;
+        height: 80vh;
         
         #table-preview {
             font-size: 0.9em;
@@ -124,6 +128,14 @@
                 white-space: nowrap;
             }
         }
+    }
+}
+.view-scope.scope-page-about {
+    .about-section {
+        width: 70%;
+        pre {
+            font-size: 1.1em;
+        }   
     }
 }
 

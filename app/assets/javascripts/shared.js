@@ -2,6 +2,8 @@
 $(document).ready(function() {
     var label_systemTime = $('#label-systemTime');
 
+    var linkCollection_closeMessage = $('.link-closeMessage');
+
     setInterval(incrementSystemTime, 1000);
     function incrementSystemTime() {
         label_systemTime.html(
@@ -21,6 +23,10 @@ $(document).ready(function() {
     }
     api_getSystemTime();
     
+    
+    linkCollection_closeMessage.click(function() {
+        $(this).parent().parent().css('display', 'none');
+    })
 });
 
 function executeScriptFor(selector, f) {

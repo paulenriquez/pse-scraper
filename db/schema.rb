@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 20170628062811) do
   end
 
   create_table "scraper_sessions", force: :cascade do |t|
+    t.integer  "session_num"
     t.datetime "launched_at"
     t.string   "details"
     t.json     "scraper_service"

@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   scope '/database' do
      get '/', to: 'pages#database', as: :pages_database
      get '/:id', to: 'pages#database_show_session', as: :pages_database_show_session
-     get '/export/:id', to: 'pages#database_export', as: :pages_database_export
+     get '/:id/export', to: 'pages#database_export', as: :pages_database_export
+     delete '/:id/destroy', to: 'scraper_sessions#destroy', as: :scraper_sessions_destroy
   end
   
   scope '/api' do

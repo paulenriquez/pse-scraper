@@ -15,7 +15,7 @@ function scope_page_scraper() {
                         ${session.records_count} record(s) created, ${Number(session.performance_data.time_elapsed).toFixed(2)}s elapsed.<br>
                         ${session.status.text[1]}
                     `);
-                    table_activeSessionInfo.find('tr:eq(0) td:eq(1)').html(session.id);
+                    table_activeSessionInfo.find('tr:eq(0) td:eq(1)').html(session.session_num);
                     table_activeSessionInfo.find('tr:eq(1) td:eq(1)').html(session.launched_at);
                     table_activeSessionInfo.find('tr:eq(2) td:eq(1)').html(session.details);
                     table_activeSessionInfo.find('tr:eq(3) td:eq(1)').html(session.scraper_service.name);
@@ -74,7 +74,7 @@ function scope_page_scraper() {
                 }
                 setTimeout(api_getSchedule, 3000);
             })
-            .fail(function() {
+            .fail(function(err) {
                 table_scrapeSchedule.find('tbody').html(`<span style="color:red">Failed to retrieve schedule data from server. Request returned ${err.status} (${err.statusText})</span>`);
                 setTimeout(api_getSchedule, 5000);
             });
@@ -151,9 +151,9 @@ function scope_page_database_show_session() {
         api_getTablePreview(thisLink.data('id'), $(this).data('table'));
         linkCollection_dataPreview.each(function() {
             if ($(this).html() == thisLink.html()) {
-                $(this).addClass('selected tab');
+                $(this).addClass('selected');
             } else {
-                $(this).removeClass('selected tab');
+                $(this).removeClass('selected');
             }
         });
     });

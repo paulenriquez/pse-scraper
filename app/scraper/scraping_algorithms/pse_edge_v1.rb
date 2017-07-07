@@ -16,21 +16,27 @@ class ScrapingAlgorithms::PseEdgeV1 < BaseScraperService
     end
     
     private
+        # The main() method is called by the BaseScraperService
         def main
             scrape_market_status
             scrape_indices
             scrape_stocks
         end
+        
         def scrape_market_status
             urls = {
                  market_status: 'http://edge.pse.com.ph/index/form.do'
             }
+            
+            # Nokogiri parses the HTML retrieved by HTTParty from the Market Status URL
             market_status_page = Nokogiri::HTML(HTTParty.get(urls[:market_status]))
             
+            # Create a new instance of the DataMarketStatus record.
             data_market_status = DataMarketStatus.new(scraper_session_id: @current_session.id)
             
             update_status("Extracting Market Status")
             
+            # Assign specific data from the different data_market_status attributes using the ncss selector.
             data_market_status.last_updated  = market_status_page.css('div#market table.list:eq(1) thead tr th:eq(2)').text
             data_market_status.total_volume  = market_status_page.css('div#market table.list:eq(1) tbody tr:eq(1) td:eq(2)').text
             data_market_status.total_trades  = market_status_page.css('div#market table.list:eq(1) tbody tr:eq(2) td:eq(2)').text
@@ -49,6 +55,8 @@ class ScrapingAlgorithms::PseEdgeV1 < BaseScraperService
             index_data_page = Nokogiri::HTML(HTTParty.get(urls[:indices]))
             
             update_status("Scraping Index Data from #{urls[:indices]}")
+            
+            # Iterate through each tr of the table containing the indices
             index_data_page.css('div#index table.list:eq(1) tbody tr').each do |table_row|
                 update_status("Extracting Index Data — #{table_row.css('td.label').text} ...")
                 
@@ -71,17 +79,21 @@ class ScrapingAlgorithms::PseEdgeV1 < BaseScraperService
             
             company_list_page = Nokogiri::HTML(HTTParty.get(urls[:company_list]))
             
+            # Iterate through each pagination item in the company list table
             for page_num in 1..company_list_page.css('div.paging span').count
                 company_list_page = Nokogiri::HTML(
                     HTTParty.post(urls[:company_list], body: {pageNo: page_num})
                 ) if page_num != 1
                 
+                # Iterate through each link in the company list table
                 company_list_page.css('table.list tbody tr td:eq(1) a').each do |link|
+                    # Extract company id from the link's onclick Javascript function
                     company_id = link.attr('onclick').split(';').shift[0..-2].split('(').pop.split(',').shift[1..-2]
                     
                     stock_data_page = Nokogiri::HTML(HTTParty.get(urls[:stock_data] + "?cmpy_id=#{company_id}"))
                     company_info_page = Nokogiri::HTML(HTTParty.get(urls[:stock_company_info] + "?cmpy_id=#{company_id}"))
                     
+                    # Iterate through each stock of a company from the select component
                     stock_data_page.css('div#contents form select[name=security_id] option').each do |option|
                         security_id = option.attr('value')
                         stock_data_page = Nokogiri::HTML(HTTParty.get(urls[:stock_data] + "?cmpy_id=#{company_id}&security_id=#{security_id}"))

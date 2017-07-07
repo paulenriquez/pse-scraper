@@ -1,4 +1,18 @@
 wb = xlsx_package.workbook
+wb.add_worksheet(name: 'Session') do |sheet|
+    [
+        ['session_num', @scraper_session.session_num],
+        ['database_id', @scraper_session.id],
+        ['launched_at', @scraper_session.launched_at.strftime('%a, %d %b %Y %H:%M:%S')],
+        ['details', @scraper_session.details],
+        ['state', @scraper_session.run_state],
+        ['scraper', @scraper_session.scraper_service['name']],
+        ['records', @scraper_session.get_records_count],
+        ['data_tables', @scraper_session.data_tables.join(', ')]
+    ].each do |kvpair|
+        sheet.add_row(kvpair)
+    end
+end
 scraped_data = @scraper_session.get_scraped_data
 scraped_data.keys.each do |key|
     wb.add_worksheet(name: key) do |sheet|

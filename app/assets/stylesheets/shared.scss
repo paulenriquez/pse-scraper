@@ -13,10 +13,21 @@ a.disabled {
     cursor: default;
     color: darkgray;
 }
+a.icon {
+    text-decoration: none;
+    i {
+        font-size: 1.1em !important;
+        padding-right: 0.3em;
+    }
+}
+a.tab {
+    text-decoration: none;
+}
 a.selected.tab {
     pointer-events: none;
     cursor: default;
     color: black;
+    border-bottom: 1.3px solid black;
     text-decoration: none;
 }
 
@@ -69,11 +80,25 @@ code, pre {
         font-size: 0.93em;
         color: black;
         margin-bottom: 0.7em;
+        
+        .message, .close {
+            display: inline-block;
+        }
+        .message {
+            width: 90%;
+        }
+        .close {
+            a {
+                text-decoration: none !important;
+            }
+            text-align: right;
+            float: right;
+        }
     }
-    .page-message.success {
+    .page-message.success .message {
         color: darkgreen !important;
     }
-    .page-message.error {
+    .page-message.error .message {
         color: maroon !important;
     }
 }

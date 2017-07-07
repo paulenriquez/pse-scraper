@@ -33,12 +33,14 @@
     <div class="page-messages">
       <% if notice %>
         <div class="page-message success">
-          <%= flash[:notice] %>
+          <div class="message"><%= flash[:notice] %></div>
+          <div class="close"><%= link_to '[x]', 'javascript:void(0)', class: 'link-closeMessage' %></div>
         </div>
       <% end %>
       <% if alert %>
         <div class="page-message error">
-          <%= flash[:alert] %>
+          <div class="message"><%= flash[:alert] %></div>
+          <div class="close"><%= link_to '[x]', 'javascript:void(0)', class: 'link-closeMessage' %></div>
         </div>
       <% end %>
     </div>

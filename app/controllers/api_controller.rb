@@ -14,7 +14,7 @@ class ApiController < ApplicationController
             if Delayed::Job.where(queue: 'scraper_service').empty?
                 next_scrape = 'no-scheduled-scrape'
             else
-                next_scrape = ScraperSession.find(Delayed::Job.where(queue: 'scraper_service').first.job_metadata['scraper_session_id']).launched_at.strftime('%a, %d %b %Y %H:%M:%S')
+                next_scrape = Delayed::Job.where(queue: 'scraper_service').order(run_at: :asc).first.run_at.strftime('%a, %d %b %Y %H:%M:%S')
             end
             
             render json: { status: 'not-running', next_scrape: next_scrape }

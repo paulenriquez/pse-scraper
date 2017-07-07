@@ -1,59 +1,82 @@
 <div class="view-scope scope-page-database-show-session">
-    <div class="page-section with-border">
-        <div class="section-content">
-            <table class="session-info-table">
-                <tbody>
-                    <tr>
-                        <td>Session Id</td>
-                        <td><%= @scraper_session.id %></td>
-                    </tr>
-                    <tr>
-                        <td>Launched at</td>
-                        <td><%= @scraper_session.launched_at.strftime('%a, %d %b %Y %H:%M:%S') %></td>
-                    </tr>
-                    <tr>
-                        <td>Details</td>
-                        <td><%= @scraper_session.details %></td>
-                    </tr>
-                    <tr>
-                        <td>State</td>
-                        <td><%= @scraper_session.run_state %></td>
-                    </tr>
-                    <tr>
-                        <td>Scraper</td>
-                        <td><%= @scraper_session.scraper_service['name'] %></td>
-                    </tr>
-                    <tr>
-                        <td>Records</td>
-                        <td><%= @scraper_session.get_records_count %></td>
-                    </tr>
-                    <tr>
-                        <td>Performance</td>
-                        <td>
-                            <div>Time Start:</div> <%= Time.parse(@scraper_session.performance_data['time_start']).strftime('%d-%m-%Y %H:%M:%S') %><br>
-                            <div>Time End:</div> <%= Time.parse(@scraper_session.performance_data['time_end']).strftime('%d-%m-%Y %H:%M:%S') %><br>
-                            <div>Duration:</div> <%= number_with_precision(@scraper_session.get_time_elapsed, precision: 2) %> s
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="page-section with-border">
-        <div class="section-header">Scraped Data</div>
-        <div class="section-content">
-            <span>
-                <i>Select a table to preview:</i>&nbsp;&nbsp;
-                <% @scraper_session.get_scraped_data.keys.each do |key| %>
-                   <%= link_to key, 'javascript:void(0);', class: 'link-dataPreview', data: {id: @scraper_session.id, table: key} %>&nbsp;&nbsp;
-                <% end %>
-            </span>
-            <div class="table-preview-container">
-                <table id="table-preview">
+    <% if @scraper_session.run_state == 'completed' || @scraper_session.run_state == 'interrupted' %>
+        <div class="page-section with-border">
+            <div class="section-header">Session # <%= @scraper_session.session_num %></div>
+            <div class="section-content">
+                <hr>
+                <table class="session-info-table">
                     <tbody>
+                        <tr>
+                            <td>Database Id</td>
+                            <td><%= @scraper_session.id %></td>
+                        </tr>
+                        <tr>
+                            <td>Launched at</td>
+                            <td><%= @scraper_session.launched_at.strftime('%a, %d %b %Y %H:%M:%S') %></td>
+                        </tr>
+                        <tr>
+                            <td>Details</td>
+                            <td><%= @scraper_session.details %></td>
+                        </tr>
+                        <tr>
+                            <td>State</td>
+                            <td><%= @scraper_session.run_state.capitalize %></td>
+                        </tr>
+                        <tr>
+                            <td>Scraper</td>
+                            <td><%= @scraper_session.scraper_service['name'] %></td>
+                        </tr>
+                        <tr>
+                            <td>Records</td>
+                            <td><%= @scraper_session.get_records_count %></td>
+                        </tr>
+                        <tr>
+                            <td>Performance</td>
+                            <td>
+                                <div>Time Start:</div> <%= Time.parse(@scraper_session.performance_data['time_start']).strftime('%d-%m-%Y %H:%M:%S') %><br>
+                                <div>Time End:</div> <%= Time.parse(@scraper_session.performance_data['time_end']).strftime('%d-%m-%Y %H:%M:%S') %><br>
+                                <div>Duration:</div> <%= number_with_precision(@scraper_session.get_time_elapsed, precision: 2) %> s
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
+                <hr>
+                <table class="session-info-table">
+                    <tbody>
+                        <tr>
+                            <td>Actions</td>
+                            <td>
+                                <%= link_to "#{material_icon.file_download}Export to xlsx".html_safe, pages_database_export_path(@scraper_session, format: 'xlsx'), class: 'icon',title: 'Export and download data' %>
+                                &nbsp;
+                                &nbsp;
+                                <% delete_prompt = "Are you sure you want to delete Session # #{@scraper_session.session_num}? This will delete the session record, including all of its #{@scraper_session.get_records_count} scraped data records. This process cannot be reversed." %>
+                                <%= link_to "#{material_icon.delete}Delete session and data".html_safe, scraper_sessions_destroy_path(@scraper_session), method: 'DELETE', title: 'Delete session', class: 'icon', data: { confirm: delete_prompt } %>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <hr>
+                <span>
+                    <div class="data-preview-subheader">Data Preview</div>
+                    <i>Select a table to preview:</i>
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    <% scraped_data = @scraper_session.get_scraped_data %>
+                    <% scraped_data.keys.each_with_index do |key, i| %>
+                       <%= link_to key, 'javascript:void(0);', class: 'link-dataPreview tab', data: {id: @scraper_session.id, table: key} %>
+                       <%= "&nbsp;".html_safe if i != scraped_data.count - 1 %>
+                    <% end %>
+                </span>
+                <div class="table-preview-container">
+                    <table id="table-preview">
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
+    <% else %>
+        <span>This session can't be loaded.</span>
+    <% end %>
 </div>
