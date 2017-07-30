@@ -1,0 +1,192 @@
+/* line 2, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.view-scope.scope-page-scraper #table-scrapeSchedule {
+  width: 100%;
+  vertical-align: center;
+}
+/* line 5, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.view-scope.scope-page-scraper #table-scrapeSchedule td:nth-child(1) {
+  width: 2%;
+}
+/* line 6, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.view-scope.scope-page-scraper #table-scrapeSchedule td:nth-child(2) {
+  width: 27%;
+}
+/* line 7, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.view-scope.scope-page-scraper #table-scrapeSchedule td:nth-child(3) {
+  width: 28%;
+}
+
+/* line 11, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.view-scope.scope-page-scraper-configure-schedule form {
+  margin-top: 0.3em;
+}
+/* line 13, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.view-scope.scope-page-scraper-configure-schedule form label {
+  font-size: 0.9em;
+}
+/* line 16, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.view-scope.scope-page-scraper-configure-schedule form #input-scrapeSched {
+  width: 50%;
+}
+/* line 19, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.view-scope.scope-page-scraper-configure-schedule form #button-submitScrapeSched {
+  width: 4em;
+}
+/* line 22, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.view-scope.scope-page-scraper-configure-schedule form #label-cronEval {
+  margin-top: 0.3em;
+  font-size: 0.9em;
+}
+
+/* line 30, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.view-scope.scope-page-scraper-session-launcher form label {
+  font-size: 0.9em;
+}
+/* line 33, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.view-scope.scope-page-scraper-session-launcher form .details-input {
+  width: 40%;
+}
+/* line 36, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.view-scope.scope-page-scraper-session-launcher form .submit-details-button {
+  width: 5em;
+}
+
+/* line 43, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.view-scope.scope-page-database .instructions .material-icons {
+  font-size: 1.3em;
+}
+/* line 47, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.view-scope.scope-page-database .sessions-list-table {
+  width: 100%;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  font-size: 0.9em;
+}
+/* line 52, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.view-scope.scope-page-database .sessions-list-table thead {
+  font-weight: 700;
+}
+/* line 54, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.view-scope.scope-page-database .sessions-list-table thead td {
+  padding-bottom: 1em;
+}
+/* line 58, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.view-scope.scope-page-database .sessions-list-table td {
+  max-width: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+/* line 64, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.view-scope.scope-page-database .sessions-list-table td:nth-child(1) {
+  width: 5%;
+}
+/* line 65, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.view-scope.scope-page-database .sessions-list-table td:nth-child(2) {
+  width: 25%;
+}
+/* line 66, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.view-scope.scope-page-database .sessions-list-table td:nth-child(3) {
+  width: 35%;
+}
+/* line 67, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.view-scope.scope-page-database .sessions-list-table td:nth-child(4) {
+  width: 15%;
+}
+/* line 68, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.view-scope.scope-page-database .sessions-list-table td:nth-child(5) {
+  width: 10%;
+}
+/* line 69, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.view-scope.scope-page-database .sessions-list-table td:nth-child(6) {
+  width: 10%;
+  text-align: right;
+}
+/* line 72, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.view-scope.scope-page-database .sessions-list-table td:nth-child(6) .material-icons {
+  color: #9999ff;
+  font-size: 1.15em;
+}
+/* line 76, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.view-scope.scope-page-database .sessions-list-table td:nth-child(6) .material-icons:hover {
+  color: #0000EE;
+}
+/* line 79, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.view-scope.scope-page-database .sessions-list-table td:nth-child(6) .material-icons:active {
+  color: #EE0000;
+}
+/* line 84, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.view-scope.scope-page-database .pagination {
+  text-align: center;
+  font-size: 1.05em;
+}
+/* line 87, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.view-scope.scope-page-database .pagination span.disabled {
+  color: dimgray;
+}
+/* line 90, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.view-scope.scope-page-database .pagination .previous_page {
+  margin-right: 0.6em;
+}
+/* line 93, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.view-scope.scope-page-database .pagination .next_page {
+  margin-left: 0.6em;
+}
+/* line 96, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.view-scope.scope-page-database .pagination em.current {
+  font-style: normal;
+}
+
+/* line 103, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.view-scope.scope-page-database-show-session .session-info-table tr:nth-child(7) td:nth-child(2) div {
+  display: inline-block;
+  width: 7em;
+}
+/* line 108, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.view-scope.scope-page-database-show-session .data-preview-subheader {
+  font-weight: 700;
+  margin-bottom: 0.5em;
+}
+/* line 112, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.view-scope.scope-page-database-show-session .table-preview-container {
+  overflow: scroll;
+  margin-top: 0.5em;
+  border: 1px darkgray solid;
+  height: 80vh;
+}
+/* line 118, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.view-scope.scope-page-database-show-session .table-preview-container #table-preview {
+  font-size: 0.9em;
+}
+/* line 120, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.view-scope.scope-page-database-show-session .table-preview-container #table-preview tr:nth-child(1) {
+  font-weight: 700;
+}
+/* line 122, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.view-scope.scope-page-database-show-session .table-preview-container #table-preview tr:nth-child(1) td {
+  padding-bottom: 0.6em !important;
+}
+/* line 126, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.view-scope.scope-page-database-show-session .table-preview-container #table-preview td {
+  padding: 0.15em 0.55em 0.15em 0.55em;
+  white-space: nowrap;
+}
+
+/* line 134, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.view-scope.scope-page-about .about-section {
+  width: 70%;
+}
+/* line 136, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.view-scope.scope-page-about .about-section pre {
+  font-size: 1.1em;
+}
+
+/* line 144, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.session-info-table tr * {
+  vertical-align: top;
+}
+/* line 147, /home/ubuntu/workspace/app/assets/stylesheets/pages.scss */
+.session-info-table tr td:nth-child(1) {
+  width: 10em;
+  font-weight: 700;
+}

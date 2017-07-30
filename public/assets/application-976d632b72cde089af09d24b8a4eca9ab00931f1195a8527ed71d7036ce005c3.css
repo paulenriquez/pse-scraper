@@ -1,0 +1,275 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+
+ */
+/*
+ * CSS File of Material icons.
+ * CSS code based on:
+ * https://google.github.io/material-design-icons/#icon-font-for-the-web
+ */
+
+
+
+
+
+
+/* Use the font */
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/assets/MaterialIcons-Regular-8c998b4a9c0acbb9fe5dd572c206a5a33fdd5ca2b58db87fc3b893beac85068d.eot'); /* For IE6-8 */
+  src: local('Material Icons'),
+       local('MaterialIcons-Regular'),
+       url('/assets/MaterialIcons-Regular-a87d66c91b2e7dc5530aef76c03bd6a3d25ea5826110bf4803b561b811cc8726.woff2') format('woff2'),
+       url('/assets/MaterialIcons-Regular-c4a1baec300d09e03a8380b85918267ee80faae8e00c6c56b48e2e74b1d9b38d.woff') format('woff'),
+       url('/assets/MaterialIcons-Regular-b7f4a3ab562048f28dd1fa691601bc43363a61d0f876d16d8316c52e4f32d696.ttf') format('truetype');
+}
+
+/* Base class */
+.material-icons,
+.mi {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+  text-transform: none;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+/* Rules for sizing the icon. */
+.material-icons.md-18, .mi.md-18 { font-size: 18px; }
+.material-icons.md-24, .mi.md-24 { font-size: 24px; }
+.material-icons.md-36, .mi.md-36 { font-size: 36px; }
+.material-icons.md-48, .mi.md-48 { font-size: 48px; }
+
+/* Rules for using icons as black on a light background. */
+.material-icons.md-dark, .mi.md-dark { color: rgba(0, 0, 0, 0.54); }
+.material-icons.md-dark.md-inactive, .mi.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+
+/* Rules for using icons as white on a dark background. */
+.material-icons.md-light, .mi.md-light { color: rgba(255, 255, 255, 1); }
+.material-icons.md-light.md-inactive, .mi.md-inactive { color: rgba(255, 255, 255, 0.3); }
+
+/* Rules to rotate items */
+.material-icons.r90, .mi.r90 {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+.material-icons.r180, .mi.r180 {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.material-icons.r270, .mi.r270 {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+  -webkit-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  transform: rotate(270deg);
+}
+.material-icons.flip-horizontal, .mi.flip-horizontal {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1);
+  -webkit-transform: scale(-1, 1);
+  -ms-transform: scale(-1, 1);
+  transform: scale(-1, 1);
+}
+.material-icons.flip-vertical, .mi.flip-vertical {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1);
+  -webkit-transform: scale(1, -1);
+  -ms-transform: scale(1, -1);
+  transform: scale(1, -1);
+}
+/* line 1, /home/ubuntu/workspace/app/assets/stylesheets/shared.scss */
+body {
+  font-family: 'Verdana', 'Geneva', sans-serif;
+}
+
+/* line 5, /home/ubuntu/workspace/app/assets/stylesheets/shared.scss */
+a {
+  color: #0000EE;
+}
+
+/* line 8, /home/ubuntu/workspace/app/assets/stylesheets/shared.scss */
+a:active {
+  color: #EE0000;
+}
+
+/* line 11, /home/ubuntu/workspace/app/assets/stylesheets/shared.scss */
+a.disabled {
+  pointer-events: none;
+  cursor: default;
+  color: darkgray;
+}
+
+/* line 16, /home/ubuntu/workspace/app/assets/stylesheets/shared.scss */
+a.icon {
+  text-decoration: none;
+}
+/* line 18, /home/ubuntu/workspace/app/assets/stylesheets/shared.scss */
+a.icon i {
+  font-size: 1.1em !important;
+  padding-right: 0.3em;
+}
+
+/* line 23, /home/ubuntu/workspace/app/assets/stylesheets/shared.scss */
+a.tab {
+  text-decoration: none;
+}
+
+/* line 26, /home/ubuntu/workspace/app/assets/stylesheets/shared.scss */
+a.selected.tab {
+  pointer-events: none;
+  cursor: default;
+  color: black;
+  border-bottom: 1.3px solid black;
+  text-decoration: none;
+}
+
+/* line 34, /home/ubuntu/workspace/app/assets/stylesheets/shared.scss */
+code, pre {
+  background-color: white;
+  border: #CCCCCC;
+  border-style: solid;
+  border-top-width: thin;
+  border-right-width: thin;
+  border-bottom-width: thin;
+  border-left-width: thin;
+  padding: 0.5em;
+  margin-bottom: 1em;
+}
+
+/* line 46, /home/ubuntu/workspace/app/assets/stylesheets/shared.scss */
+.content {
+  width: 60vw;
+  min-width: 900px;
+  margin: 0 auto;
+}
+
+/* line 52, /home/ubuntu/workspace/app/assets/stylesheets/shared.scss */
+.top {
+  margin-bottom: 1em;
+}
+/* line 54, /home/ubuntu/workspace/app/assets/stylesheets/shared.scss */
+.top .menu {
+  height: 1.5em;
+}
+/* line 56, /home/ubuntu/workspace/app/assets/stylesheets/shared.scss */
+.top .menu * {
+  width: 50%;
+}
+/* line 59, /home/ubuntu/workspace/app/assets/stylesheets/shared.scss */
+.top .menu .left-items {
+  float: left;
+}
+/* line 62, /home/ubuntu/workspace/app/assets/stylesheets/shared.scss */
+.top .menu .right-items {
+  float: right;
+  text-align: right;
+}
+
+/* line 69, /home/ubuntu/workspace/app/assets/stylesheets/shared.scss */
+.view-scope {
+  margin-bottom: 5em;
+}
+
+/* line 73, /home/ubuntu/workspace/app/assets/stylesheets/shared.scss */
+.page-messages {
+  margin-bottom: 1.5em;
+}
+/* line 76, /home/ubuntu/workspace/app/assets/stylesheets/shared.scss */
+.page-messages .page-message {
+  background-color: #fafafa;
+  border: 1px solid #bdbdbd;
+  padding: 0.5em;
+  font-size: 0.93em;
+  color: black;
+  margin-bottom: 0.7em;
+}
+/* line 84, /home/ubuntu/workspace/app/assets/stylesheets/shared.scss */
+.page-messages .page-message .message, .page-messages .page-message .close {
+  display: inline-block;
+}
+/* line 87, /home/ubuntu/workspace/app/assets/stylesheets/shared.scss */
+.page-messages .page-message .message {
+  width: 90%;
+}
+/* line 90, /home/ubuntu/workspace/app/assets/stylesheets/shared.scss */
+.page-messages .page-message .close {
+  text-align: right;
+  float: right;
+}
+/* line 91, /home/ubuntu/workspace/app/assets/stylesheets/shared.scss */
+.page-messages .page-message .close a {
+  text-decoration: none !important;
+}
+/* line 98, /home/ubuntu/workspace/app/assets/stylesheets/shared.scss */
+.page-messages .page-message.success .message {
+  color: darkgreen !important;
+}
+/* line 101, /home/ubuntu/workspace/app/assets/stylesheets/shared.scss */
+.page-messages .page-message.error .message {
+  color: maroon !important;
+}
+
+/* line 105, /home/ubuntu/workspace/app/assets/stylesheets/shared.scss */
+.page-section {
+  margin-bottom: 1em;
+}
+/* line 107, /home/ubuntu/workspace/app/assets/stylesheets/shared.scss */
+.page-section .section-header {
+  margin-bottom: 0.5em;
+  font-weight: 700;
+  font-size: 1em;
+}
+/* line 112, /home/ubuntu/workspace/app/assets/stylesheets/shared.scss */
+.page-section .section-content {
+  font-size: 0.95em;
+}
+/* line 115, /home/ubuntu/workspace/app/assets/stylesheets/shared.scss */
+.page-section hr {
+  background-color: gray;
+  border: 0;
+  height: 1px;
+}
+
+/* line 121, /home/ubuntu/workspace/app/assets/stylesheets/shared.scss */
+.page-section.with-border {
+  border: 1px solid dimgray;
+  padding: 0.5em;
+}
+/* line 124, /home/ubuntu/workspace/app/assets/stylesheets/shared.scss */
+.page-section.with-border .section-header {
+  font-size: 0.97em;
+}
+/* line 127, /home/ubuntu/workspace/app/assets/stylesheets/shared.scss */
+.page-section.with-border .section-content {
+  font-size: 0.9em !important;
+}
